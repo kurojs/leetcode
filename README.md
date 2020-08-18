@@ -1,0 +1,2 @@
+# leetcode
+Naive Leetcode solutions
