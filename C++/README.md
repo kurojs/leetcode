@@ -1,4 +1,4 @@
-# leetcode
+# Leetcode brute force way
 
 Naive LeetCode solutions repository of kurojs
 
@@ -11,6 +11,8 @@ All problems question belong to leetcode.com
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Note
+## Acknowledgments
 
-* Install leetcode extension on vscode to test and submit solutions
+* Hat tip to anyone whose code was used
+* Inspiration
+* etc
