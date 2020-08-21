@@ -49,32 +49,37 @@
 class Solution {
 public:
     int rob(vector<int>& nums) {
-        // Because we can take both the first and the last house
-        // Create two array for each one
-        // And just take the bigger amount
-        
         int n = nums.size();
         if (n < 1) {
             return 0;
         }
-        
+
         if (n == 1) {
             return nums[0];
         }
-        
+
+        if (n == 2) {
+            return max(nums[0], nums[1]);
+        }
+
+        // Because we can take both the first and the last house
+        // So just take the bigger amount
+        int lastHouse = nums[n-1];
+        nums[n-1] = 0;
+        int maxWithoutLastHouse = helper(nums);
+
+        nums[0] = 0;
+        nums[n-1] = lastHouse;
+        int maxWithoutFirstHouse = helper(nums);
+
+        return max(maxWithoutFirstHouse, maxWithoutLastHouse);
+    }
+
+    int helper(vector<int>& nums) {
         // Store max money can take for this house
+        int n = nums.size();
         int dp [n + 1];
         memset(dp, 0, sizeof(dp));
-        dp[0] = 0;
-        dp[1] = nums[0];
-        
-        for (int i = 1; i < n - 1; i++) {
-            dp[i + 1] = max(dp[i], nums[i] + dp[i-1]);
-        }
-        
-        int maxMoney = dp[n-1];
-        memset(dp, 0, sizeof(dp));
-        nums[0] = 0;
         dp[0] = 0;
         dp[1] = nums[0];
         
@@ -82,7 +87,7 @@ public:
             dp[i + 1] = max(dp[i], nums[i] + dp[i-1]);
         }
         
-        return max(maxMoney, dp[n]);
+        return dp[n];
     }
 };
 // @lc code=end
